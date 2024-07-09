@@ -42,15 +42,15 @@ if [ \"\$inputpass\" == \"\$rootpass\" ]; then
 else
     echo \"[sudo] Authentication failed!\"
     exit 1
-fi" > /system/bin/sudo
+fi" > /system/xbin/sudo
         else
             echo "[sudo] Creating wrapper script..."
             echo "#!/system/bin/sh
 
 cmd=\"\$@\"
-su -c \"\$cmd\"" > /system/bin/sudo
+su -c \"\$cmd\"" > /system/xbin/sudo
         fi
-        chmod 0755 /system/bin/sudo
+        chmod 0755 /system/xbin/sudo
         echo "[sudo] Remounting system as ro..."
         mount -o ro,remount /system > /dev/null 2>&1
         if [ "$?" == "0" ]; then
